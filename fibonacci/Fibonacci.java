@@ -21,10 +21,10 @@ class Fibonacci{
     }
     public static void main(String[] args){
 
-	run_stress_testing();
-	//FastScanner scanner = new FastScanner(System.in);
-	//int n = scanner.nextInt();
-	//System.out.println(recursive_fibonacci(n)+" "+regular_fibonacci(n));
+	//run_stress_testing();
+	FastScanner scanner = new FastScanner(System.in);
+	int n = scanner.nextInt();
+	System.out.println(recursive_fibonacci(n)+" "+regular_fibonacci(n));
 	    
     }
 

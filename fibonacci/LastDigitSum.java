@@ -1,15 +1,12 @@
+// Number 6
+package fibonacci;
+
+import Auxiliary.FastScanner;
+import Auxiliary.StressTester;
 import java.util.Arrays;
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.InputStreamReader;
-import java.io.FileNotFoundException;
-import java.util.StringTokenizer;
-import java.io.InputStream;
-import java.io.InputStreamReader;
 
-// Number 8
 
-public class temp {
+class LastDigitSum{
     static int naive_fibonacci(int n, int m){
 	int sum=0;
 	int[] arr = new int[n+1];
@@ -20,7 +17,7 @@ public class temp {
 	}
 	for(int i=2; i<=n; i++){
 	    arr[i]=(arr[i-1]%m+arr[i-2]%m)%m;
-	    sum=(sum+(int)Math.pow(arr[i],2))%m;
+	    sum=(sum+arr[i])%m;
 	}
 	return sum;
     }
@@ -54,13 +51,17 @@ public class temp {
 	return res;
     }
 
+    static int minus(int number1, int number2, int limit){
+	if (number1 == 0) return limit - number2; // 0-1 = 10-1 = 9
+	else return number1 - number2; //3-1 = 2
+    }
+    
     static int pisano_fibonacci(long n, int m){
 	long pisano_period = pisano_period(m);
+	n=n+2; //because-> sum of (f_n) = f_(n+2)
 	n = n % pisano_period;
-	int n1 = nth_fibonacci((int)n, m);
-	n = (n+1)%pisano_period;
-	int n2 = nth_fibonacci((int)(n), m); 
-	return (n1*n2)%m;
+	int temp = nth_fibonacci((int)n, (int)m);
+	return minus(temp, 1, 10);
     }
 
     public static void main(String[] args){
@@ -88,38 +89,4 @@ public class temp {
 	}
     }
 
-}
-
-
-class FastScanner{
-    BufferedReader br;
-    StringTokenizer st;
-    public FastScanner(InputStream stream){
-	try{
-	    br = new BufferedReader(new InputStreamReader(stream));
-	} catch(Exception e){
-	    e.printStackTrace();
-	}
-    } 
-    public String nextToken(){
-		while(st==null || !st.hasMoreTokens()){ //hasMoreTokens() test is done by using nextToken method. If nextToken does not return error, then it means it has more tokens.
-		    // When we have no more tokens for that line, we create a new tokenizer for the next line.
-		    try{
-			st = new StringTokenizer(br.readLine());
-		    }catch(Exception e){
-			e.printStackTrace();
-		    }
-		}
-		return st.nextToken();
-    }
-    
-    public int nextInt(){
-	return Integer.parseInt(nextToken());
-    }
-    public long nextLong(){
-	return Long.parseLong(nextToken());
-    }
-    public double nextDouble(){
-	return Double.parseDouble(nextToken());
-    }
 }

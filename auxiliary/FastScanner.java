@@ -1,4 +1,4 @@
-package MaxPairwiseProduct;
+package auxiliary;
 
 import java.io.BufferedReader;
 import java.io.FileReader;

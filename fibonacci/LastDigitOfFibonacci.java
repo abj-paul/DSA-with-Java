@@ -1,19 +1,22 @@
+package fibonacci;
+
 import Auxiliary.FastScanner;
 import Auxiliary.StressTester;
 import java.util.Arrays;
- 
-class Fibonacci{
-    static int recursive_fibonacci(int n){
+
+
+public class LastDigitOfFibonacci{
+        static int recursive_fibonacci(int n){
 	if(n==0) return 0;
 	if(n==1) return 1;
-	else return recursive_fibonacci(n-1) + recursive_fibonacci(n-2);
+	else return (recursive_fibonacci(n-1)%10 + recursive_fibonacci(n-2)%10)%10;
     }
     static int regular_fibonacci(int n){
 	int[] arr = new int[n+1];
 	Arrays.fill(arr, 0);
 	arr[1]=1;
 	for(int i=2; i<=n; i++){
-	    arr[i]=arr[i-1]+arr[i-2];
+	    arr[i]=(arr[i-1]%10+arr[i-2]%10)%10;
 	}
 	return arr[n];
     }
@@ -41,5 +44,5 @@ class Fibonacci{
 	    }
 	}
     }
-    
+
 }
